@@ -1,0 +1,10 @@
+[Unit]
+Description=Server Manager
+
+[Service]
+ExecStart=/my/server start
+ExecStop=/my/server stop
+ExecReload=/my/server restart
+
+[Install]
+WantedBy=multi-user.target

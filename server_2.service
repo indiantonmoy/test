@@ -1,0 +1,16 @@
+[Unit]
+Description=Server Manager
+
+[Service]
+Type=oneshot
+ExecStart=/my/bin/httpd
+ExecStart=/my/bin/mariadbd --datadir=/my/data --user=root
+ExecStop=/usr/bin/pkill httpd
+ExecStop=/usr/bin/pkill mariadbd
+ExecReload=/usr/bin/pkill httpd
+ExecReload=/usr/bin/pkill mariadbd
+ExecReload=/my/bin/httpd
+ExecReload=/my/bin/mariadbd --datadir=/my/data --user=root
+
+[Install]
+WantedBy=multi-user.target

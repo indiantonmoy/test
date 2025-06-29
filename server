@@ -1,0 +1,20 @@
+#!/bin/sh
+case $1 in
+'start')
+/my/bin/httpd
+/my/bin/mariadbd --datadir=/my/data --user=$USER
+;;
+'stop')
+pkill httpd
+pkill mariadbd
+;;
+'restart')
+pkill httpd
+pkill mariadbd
+/my/bin/httpd
+/my/bin/mariadbd --datadir=/my/data --user=$USER
+;;
+*)
+echo "$0 {start|stop|restart}"
+;;
+esac
